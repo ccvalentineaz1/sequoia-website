@@ -1,0 +1,182 @@
+# Sequoia Assisted Living - website editor settings (Decap CMS)
+# The GitHub repo name and site address are filled in automatically when the site is built.
+
+backend:
+  name: github
+  repo: __REPO__
+  branch: main
+  # Sign-in uses Netlify's built-in GitHub OAuth provider (no Netlify Identity / Git Gateway).
+  commit_messages:
+    update: "Website update: {{collection}} / {{slug}}"
+    uploadMedia: "Upload image {{path}}"
+    deleteMedia: "Delete image {{path}}"
+
+# Lets a developer test the editor on their own computer; ignored on the live site.
+local_backend: true
+
+site_url: __SITE_URL__
+display_url: __SITE_URL__
+logo_url: /images/uploads/logo-mark.png
+locale: en
+
+media_folder: images/uploads
+public_folder: /images/uploads
+
+collections:
+  - name: website
+    label: "Website Content"
+    description: "Click a section below to edit it. Press Publish when you're done and the live site updates in about a minute."
+    editor:
+      preview: false
+    files:
+
+      - name: hero
+        label: "1. Top of Page (Headline)"
+        file: content/hero.json
+        format: json
+        fields:
+          - { name: pill, label: "Small line above the headline", widget: string, hint: "A cactus icon is added automatically." }
+          - { name: headline, label: "Headline (first part)", widget: string }
+          - { name: accent, label: "Headline (second part, shown in green italics)", widget: string }
+          - { name: text, label: "Paragraph under the headline", widget: text }
+          - { name: primary_button, label: "First button text", widget: string, hint: "Jumps to the contact section." }
+          - { name: secondary_button, label: "Second button text", widget: string, hint: "Jumps to the services section." }
+          - { name: badge_title, label: "Floating badge - bold line", widget: string }
+          - { name: badge_text, label: "Floating badge - second line", widget: string }
+
+      - name: stats
+        label: "2. Four Highlights Strip"
+        file: content/stats.json
+        format: json
+        fields:
+          - label: "Highlights"
+            name: items
+            widget: list
+            allow_add: false
+            allow_remove: false
+            summary: "{{fields.title}} - {{fields.label}}"
+            hint: "These four boxes sit just under the top section."
+            fields:
+              - { name: title, label: "Big word", widget: string }
+              - { name: label, label: "Small text underneath", widget: string }
+
+      - name: services
+        label: "3. Services"
+        file: content/services.json
+        format: json
+        fields:
+          - { name: eyebrow, label: "Small heading above the title", widget: string }
+          - { name: heading, label: "Section title", widget: string }
+          - { name: intro, label: "Intro paragraph", widget: text }
+          - label: "Service cards"
+            name: items
+            widget: list
+            allow_add: false
+            allow_remove: false
+            summary: "{{fields.title}}"
+            hint: "Edit the title and description of each card. Each card keeps its own icon."
+            fields:
+              - { name: icon, label: "Icon", widget: hidden }
+              - { name: title, label: "Service name", widget: string }
+              - { name: description, label: "Description", widget: text }
+              - { name: short_name, label: "Short name for the footer (optional)", widget: string, required: false, hint: "Only the first four services appear in the page footer. Leave blank to use the full name." }
+
+      - name: about
+        label: "4. About Us"
+        file: content/about.json
+        format: json
+        fields:
+          - { name: big_word, label: "Large word on the left", widget: string }
+          - { name: big_caption, label: "Sentence under the large word", widget: text }
+          - { name: eyebrow, label: "Small heading above the title", widget: string }
+          - { name: heading, label: "Section title", widget: string }
+          - { name: text, label: "Paragraph", widget: text }
+          - label: "Three highlights"
+            name: pillars
+            widget: list
+            allow_add: false
+            allow_remove: false
+            summary: "{{fields.title}}"
+            fields:
+              - { name: title, label: "Title", widget: string }
+              - { name: text, label: "Description", widget: text }
+
+      - name: why
+        label: "5. Why Choose Us"
+        file: content/why.json
+        format: json
+        fields:
+          - { name: eyebrow, label: "Small heading above the title", widget: string }
+          - { name: heading, label: "Section title", widget: string }
+          - label: "Four reasons"
+            name: items
+            widget: list
+            allow_add: false
+            allow_remove: false
+            summary: "{{fields.title}}"
+            hint: "The numbers 01-04 are added automatically."
+            fields:
+              - { name: title, label: "Title", widget: string }
+              - { name: text, label: "Description", widget: text }
+
+      - name: cta
+        label: "6. 'Ready to Get Started?' Banner"
+        file: content/cta.json
+        format: json
+        fields:
+          - { name: heading, label: "Title", widget: string }
+          - { name: text, label: "Paragraph", widget: text }
+          - { name: button, label: "Button text", widget: string }
+
+      - name: contact
+        label: "7. Contact Section"
+        file: content/contact.json
+        format: json
+        fields:
+          - { name: eyebrow, label: "Small heading above the title", widget: string }
+          - { name: heading, label: "Title", widget: string }
+          - { name: text, label: "Paragraph", widget: text }
+          - { name: submit_button, label: "Form button text", widget: string }
+
+      - name: footer
+        label: "8. Footer (bottom of page)"
+        file: content/footer.json
+        format: json
+        fields:
+          - { name: brand, label: "Business name in footer", widget: string }
+          - { name: blurb, label: "Short description", widget: text, hint: "The services list in the footer comes from the Services section." }
+
+      - name: site
+        label: "9. Business Info (phone, email, address)"
+        file: content/site.json
+        format: json
+        fields:
+          - { name: business_name, label: "Business name (used in the copyright line)", widget: string }
+          - { name: phone, label: "Phone number", widget: string, hint: "Type it the way you want it shown, e.g. (480) 350-7707. Tap-to-call links are created automatically." }
+          - { name: email, label: "Email address shown on the site", widget: string, hint: "This is the address people see. Messages from the contact form go to a separate address set by your developer." }
+          - { name: address, label: "Street address", widget: string, hint: "Also becomes a link that opens in Google Maps." }
+          - { name: tagline, label: "Tagline", widget: string, hint: "Shown under the green banner button and in the copyright line." }
+          - { name: brand_name, label: "Top-left name (large)", widget: string }
+          - { name: brand_sub, label: "Top-left name (small line beneath)", widget: string }
+          - { name: page_title, label: "Browser tab / Google title", widget: string }
+
+      - name: navigation
+        label: "10. Top Menu Labels"
+        file: content/navigation.json
+        format: json
+        fields:
+          - { name: link_services, label: "Menu link 1 (goes to Services)", widget: string }
+          - { name: link_about, label: "Menu link 2 (goes to About)", widget: string }
+          - { name: link_why, label: "Menu link 3 (goes to Why Us)", widget: string }
+          - { name: link_contact, label: "Menu link 4 (goes to Contact)", widget: string }
+          - { name: button_label, label: "Dark button text (top right)", widget: string }
+
+      - name: images
+        label: "11. Logos & Images"
+        file: content/images.json
+        format: json
+        fields:
+          - { name: nav_logo, label: "Small logo (top-left corner)", widget: image, choose_url: false, media_library: { config: { max_file_size: 5242880 } }, hint: "Transparent PNG, about 500 x 310 px." }
+          - { name: nav_logo_alt, label: "Small logo - description for screen readers", widget: string }
+          - { name: hero_logo, label: "Large logo (top section, on the green card)", widget: image, choose_url: false, media_library: { config: { max_file_size: 5242880 } }, hint: "Transparent PNG, roughly square (about 620 x 640 px) with the artwork centered. The green card color shows through behind it." }
+          - { name: hero_logo_alt, label: "Large logo - description for screen readers", widget: string }

@@ -1,0 +1,43 @@
+{
+  "eyebrow": "WHAT WE OFFER",
+  "heading": "Personalized Care Services",
+  "intro": "Comprehensive support designed around daily living and well-being — from a little extra help to full daily care.",
+  "items": [
+    {
+      "icon": "person",
+      "title": "Personal Care Assistance",
+      "short_name": "Personal Care",
+      "description": "Support with bathing, dressing, grooming, and daily routines — helping residents stay comfortable and confident."
+    },
+    {
+      "icon": "memory",
+      "title": "Memory Care Support",
+      "short_name": "Memory Care",
+      "description": "Structured, specialized support for residents living with Alzheimer's or other forms of dementia."
+    },
+    {
+      "icon": "medication",
+      "title": "Medication Management",
+      "short_name": "Medication Management",
+      "description": "Trained staff track, organize, and administer medications on schedule, every time."
+    },
+    {
+      "icon": "dining",
+      "title": "Dining & Nutrition",
+      "short_name": "Dining & Nutrition",
+      "description": "Chef-prepared, dietitian-informed meals served restaurant-style, three times a day."
+    },
+    {
+      "icon": "housekeeping",
+      "title": "Housekeeping & Laundry",
+      "short_name": "",
+      "description": "Regular housekeeping and laundry service, so residents can focus on living, not chores."
+    },
+    {
+      "icon": "social",
+      "title": "Social & Recreational Activities",
+      "short_name": "",
+      "description": "A full calendar of group activities, outings, and events that keep residents engaged and connected."
+    }
+  ]
+}
